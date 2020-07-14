@@ -1,0 +1,16 @@
+.container{
+    text-align: center;
+    }
+    input{
+        width: 50%;
+    }
+    .col button{
+        margin-right: 50px;
+        margin: 10px;
+    }
+    .col button:last-child{
+        margin-right: 0px;
+    }
+    li button:hover{
+        background-color: red;
+    }
