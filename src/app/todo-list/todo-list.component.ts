@@ -29,7 +29,7 @@ export class TodoListComponent implements OnInit {
   delete(value){
   const index = this.todoArray.indexOf(value);
   this.todoArray.splice(index, 1);
-  if ( this.todoArray.length === 0){
+  if (!this.todoArray.length){
           this.divView = false;
         }
      }
