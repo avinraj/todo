@@ -8,10 +8,15 @@ import { FormGroup, FormControl, FormControlName } from '@angular/forms';
 export class TodoListComponent implements OnInit {
   divView = false;
   todoArray = [];
+ todoname = 'Todo Name';
+ todonameControl = new FormControl('');
     todo = new FormControl('');
   constructor() { }
 
   ngOnInit(): void {
+  }
+  addtodoname(name){
+this.todoname = name;
   }
   addtodo(value){
     if (!value) {
