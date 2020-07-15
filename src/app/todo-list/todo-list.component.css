@@ -21,4 +21,6 @@ h1 span{
     li button:hover{
         background-color: red;
     }
-    
+    .checked{
+        text-decoration: line-through;
+    }
