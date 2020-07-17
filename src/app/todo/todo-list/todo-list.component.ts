@@ -8,6 +8,7 @@ import { FormGroup, FormControl, FormControlName } from '@angular/forms';
 export class TodoListComponent implements OnInit {
   divView = false;
   editname = false;
+  checked = true;
   todoArray2 = [];
   arr = [];
    index2: number;
@@ -49,7 +50,7 @@ export class TodoListComponent implements OnInit {
     }
     onCheckboxChange(e, value) {
       this.index2 = this.todoArray2.indexOf(value);
-      if (e.target.checked) {
+      if (e.checked) {
          this.todoArray2[this.index2].completed = true;
       }else{
         this.todoArray2[this.index2].completed = false;
