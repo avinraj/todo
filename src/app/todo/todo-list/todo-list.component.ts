@@ -7,6 +7,7 @@ import { FormGroup, FormControl, FormControlName } from '@angular/forms';
 })
 export class TodoListComponent implements OnInit {
   divView = false;
+  editname = false;
   todoArray2 = [];
   arr = [];
    index2: number;
@@ -20,8 +21,12 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  addname(){
+    this.editname = true;
+  }
   addtodoname(name){
     this.todoname = name;
+    this.editname = false;
      }
       addtodo(value){
         if (!value) {
@@ -64,3 +69,4 @@ export class TodoListComponent implements OnInit {
          }
 
 }
+
