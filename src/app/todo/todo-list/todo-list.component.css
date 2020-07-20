@@ -8,17 +8,18 @@ h1 span{
 display: inline-block;
  }
  .titlediv2 input{
-     padding: 30px;
+     margin-top: 10px;
  }
  .titlediv2 button{
     margin-bottom: 10px;
  }
  .container{
      text-align: center;
-     max-width: 600px;
+     height: 100%;
      }
-     li button:hover{
-         background-color: red;
+     mat-card{
+         width: 50%;
+       left: 20%;
      }
      .checked{
          text-decoration: line-through;

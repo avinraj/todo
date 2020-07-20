@@ -1,5 +1,5 @@
 <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
-    <div fxFlex="100%" class="shadow p-3 mb-5 bg-white rounded">
+      <mat-card>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <h1 style="color: dodgerblue;">Log In</h1>
                      <mat-form-field >
@@ -10,5 +10,5 @@
                     </mat-form-field><br>
                     <button type="submit" [disabled]="!loginForm.valid" mat-raised-button color="primary">Submit</button>
       </form>
-    </div>
+      </mat-card>
    </div>
