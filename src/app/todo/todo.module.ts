@@ -9,6 +9,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {NavbarModule} from '../navbar/navbar.module';
 @NgModule({
   declarations: [TodoListComponent],
   imports: [
@@ -21,7 +23,9 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     MatListModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    NavbarModule
   ],
   exports: [TodoListComponent]
 })

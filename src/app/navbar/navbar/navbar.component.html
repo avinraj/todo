@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+    <div fxHide.gt-xs fxShow="true">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <h1>Todo List</h1>
+  </mat-toolbar>
+ 
+  <mat-sidenav-container  >
+ <mat-sidenav  #sidenav  opened="false" >
+     <mat-sidenav-content  >
+        <div fxLayout="column" fxLayoutAlign="space-between none" >
+            <a mat-button >Item 1</a>
+            <a mat-button >Item 2</a>
+            <a mat-button >Item 3</a>
+            <a mat-button >Item 4</a>
+            <a mat-button >Item 5</a>
+          </div>
+     </mat-sidenav-content>
+       </mat-sidenav>
+       </mat-sidenav-container>
+
+
+
+       <mat-sidenav-container fxHide.lt-sm class="sidenav2">
+        <mat-sidenav  opened="true"  >
+            <mat-sidenav-content  >
+               <div fxLayout="column" class="space">
+                   <a mat-button >Item 1</a>
+                   <a mat-button >Item 2</a>
+                   <a mat-button >Item 3</a>
+                   <a mat-button >Item 4</a>
+                   <a mat-button >Item 5</a>
+                 </div>
+            </mat-sidenav-content>
+              </mat-sidenav>
+       </mat-sidenav-container>
+    

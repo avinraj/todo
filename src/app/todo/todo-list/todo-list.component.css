@@ -15,7 +15,6 @@ display: inline-block;
  }
  .container{
      text-align: center;
-   
      }
      mat-card{
          width: 50%;
