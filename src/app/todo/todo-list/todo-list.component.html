@@ -13,7 +13,7 @@
       <button mat-raised-button color="primary" (click)="addtodoname(todonameControl.value)">OK</button>
     </div>
 </div>
-<div class="container" fxLayout="row" fxLayout.xs="column" >
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
 <mat-card>
   <form>
     <mat-form-field >
@@ -25,26 +25,38 @@
      <p>{{numberComplet}}/{{numberUncomplete}} items completed</p>
      <div *ngFor="let todo of todoArray2">
 <mat-list *ngIf="!todo.completed">
-  <mat-list-item> <div fxLayout="column">
-    <mat-checkbox class="example-margin" color="primary"  (change)="onCheckboxChange($event, todo)"></mat-checkbox>
-    <label> {{todo.todoName}}</label> 
-    <button (click)="delete(todo)" mat-button fxLayoutAlign="end">
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg>
-    </button>
-  </div>
-   
-  </mat-list-item>
+  <mat-list-item> 
+    <div fxLayout="row" fxFlexFill>
+      <div fxFlex fxLayoutAlign="start center">
+        <mat-checkbox class="example-margin" color="primary"  (change)="onCheckboxChange($event, todo)"></mat-checkbox>
+      </div>
+      <div fxFlex  fxLayoutAlign="center center">
+        <label> {{todo.todoName}}</label>
+      </div>
+      <div fxFlex  fxLayoutAlign="end center">
+        <button (click)="delete(todo)" mat-button >
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg>
+        </button>
+      </div>
+    </div>
+    </mat-list-item>
 </mat-list>
      </div>
     </div>
           <div  *ngIf="divView && numberComplet">
                <div ><p>{{numberComplet}} Completed items</p>
-                 <div *ngFor="let todo of todoArray2">
+                 <div *ngFor="let todo of todoArray2" >
                    <mat-list  *ngIf="todo.completed" > 
                      <mat-list-item>
-                      <mat-checkbox class="example-margin" color="primary" [checked]="checked" (change)="onCheckboxChange($event, todo)"></mat-checkbox>
-                      <label class="checked">{{todo.todoName}}</label>
-                     </mat-list-item>
+                       <div  fxLayout="row" fxFlexFill>
+                         <div fxFlex fxLayoutAlign="start center">
+                          <mat-checkbox class="example-margin" color="primary" [checked]="checked" (change)="onCheckboxChange($event, todo)"></mat-checkbox>
+                           </div>
+                           <div fxFlex fxLayoutAlign="start center">
+                            <label class="checked">{{todo.todoName}}</label>
+                           </div>
+                       </div>
+                      </mat-list-item>
                      </mat-list>
                  </div>
               </div>

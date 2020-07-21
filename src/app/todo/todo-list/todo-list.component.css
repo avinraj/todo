@@ -15,12 +15,11 @@ display: inline-block;
  }
  .container{
      text-align: center;
-     height: 100%;
+   
      }
      mat-card{
          width: 50%;
-       left: 20%;
-     }
+      }
      .checked{
          text-decoration: line-through;
      }
