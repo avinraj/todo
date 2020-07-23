@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormControlName } from '@angular/forms';
+import { AuthService} from '../../services/auth.service';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -11,6 +12,7 @@ export class TodoListComponent implements OnInit {
   checked = true;
   todoArray2 = [];
   arr = [];
+  todoArr = [];
    index2: number;
  numberComplet = 0;
    numberUncomplete: number;
@@ -18,9 +20,11 @@ export class TodoListComponent implements OnInit {
  todoname = 'Todo Name';
  todonameControl = new FormControl('');
     todo = new FormControl('');
-  constructor() { }
+  constructor(private service: AuthService) { }
 
   ngOnInit(): void {
+    this.todoArray2 = this.service.gettodoData();
+    this.viewtodo();
   }
   addname(){
     this.editname = true;
@@ -34,7 +38,8 @@ export class TodoListComponent implements OnInit {
           return;
         }else{
           this.todoObj = {
-            todoName: value,
+            id: '',
+            todo: value,
             completed: false
           };
           this.todoArray2.push(this.todoObj);

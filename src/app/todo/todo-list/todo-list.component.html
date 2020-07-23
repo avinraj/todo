@@ -26,10 +26,10 @@
      <p>{{numberComplet}}/{{numberUncomplete}} items completed</p>
      <div *ngFor="let todo of todoArray2">
 <mat-list *ngIf="!todo.completed">
-  <mat-list-item> 
+  <mat-list-item>  
     <div fxLayout="row" fxFlexFill>
       <div fxFlex fxLayoutAlign="start center">
-        <mat-checkbox class="example-margin" color="primary"  (change)="onCheckboxChange($event, todo)">{{todo.todoName}}</mat-checkbox>
+        <mat-checkbox class="example-margin" color="primary"  (change)="onCheckboxChange($event, todo)">{{todo.todo}}</mat-checkbox>
       </div>
       <div fxFlex  fxLayoutAlign="end center">
         <button (click)="delete(todo)" mat-button >
@@ -48,7 +48,8 @@
                      <mat-list-item>
                        <div  fxLayout="row" fxFlexFill>
                          <div fxFlex fxLayoutAlign="start center">
-                          <mat-checkbox class="example-margin" color="primary" [checked]="checked" (change)="onCheckboxChange($event, todo)">{{todo.todoName}}</mat-checkbox>
+                          <mat-checkbox class="example-margin" color="primary" [checked]="checked" (change)="onCheckboxChange($event, todo)">
+                            <p class="checked">{{todo.todo}}</p></mat-checkbox>
                            </div>
                        </div>
                       </mat-list-item>

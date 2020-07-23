@@ -20,12 +20,8 @@ loginForm = new FormGroup({
   onSubmit(){
     this.authService.userLogin(this.loginForm.value.username, this.loginForm.value.password);
     this.authStatus = this.authService.getisAuth();
-    if (this.authStatus){
-this.router.navigate(['/todolist']);
-    }
-    else{
+    if (!this.authStatus){
       return;
     }
   }
-
 }
