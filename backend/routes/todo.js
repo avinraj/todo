@@ -14,33 +14,20 @@ todoroute.post('/todoadd',(req,res) => {
 todoroute.put('/todoupdate',(req,res) =>{
     console.log(req.body);
     if(req.body.status){
-        for (let i=0;i< todoArray.length;i++){
-            let obj = todoArray[i];
-            if(obj.id === req.body.id){
-                todoArray[i].completed = true;
-            }
-        }
+     const  index = todoArray.findIndex(x => x.id === req.body.id);
+        todoArray[index].completed = true;
     }
     else{
-        for (let i=0;i< todoArray.length;i++){
-            let obj = todoArray[i];
-            if(obj.id === req.body.id){
-                todoArray[i].completed = false;
-            }
-        }
+       const index = todoArray.findIndex(x => x.id === req.body.id);
+       todoArray[index].completed = false;
     }
     console.log(todoArray);
     return res.json({tododata:todoArray});
 })
 todoroute.delete('/tododelete/:id',(req,res) => {
 console.log(req.params.id);
-id = req.params.id;
-for (let i=0;i< todoArray.length;i++){
-    let obj = todoArray[i];
-    if(obj.id ===id){
-       todoArray.splice(i,1)
-    }
-}
+const index = todoArray.findIndex(x => x.id ===req.params.id);
+todoArray.splice(index,1);
     return res.json({tododata:todoArray});
 })
 module.exports = todoroute;
