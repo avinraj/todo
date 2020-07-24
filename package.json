@@ -27,6 +27,7 @@
     "nodemon": "^2.0.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "uniqid": "^5.2.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

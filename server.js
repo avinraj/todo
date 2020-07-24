@@ -2,7 +2,8 @@ const express = require('express');
 const http = require('http');
 const app = express();
 const bodyparser = require('body-parser');
-const UserRoutes = require('./backend/routes/users')
+const UserRoutes = require('./backend/routes/users');
+const TodoRoutes = require('./backend/routes/todo');
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
     extended:false
@@ -12,6 +13,7 @@ app.get('/',(req,res) => {
    res.sendFile('./dist/clientSide/index.html');
 });
 app.use('/user',UserRoutes);
+app.use('/todo',TodoRoutes);
 const server = http.createServer(app);
 server.listen(4000, () => {
     console.log('Server created');
