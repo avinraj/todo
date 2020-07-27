@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {TodoService} from '../todo.service';
 @Component({
   selector: 'app-todo-profile',
   templateUrl: './todo-profile.component.html',
@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:TodoService) { }
 
   ngOnInit(): void {
-  }
+ }
 
 }

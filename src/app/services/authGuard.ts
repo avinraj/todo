@@ -10,6 +10,7 @@ canActivate(
     state: RouterStateSnapshot
 ): boolean | Observable<boolean> | Promise<boolean>{
     const isAuth = this.authService.getisAuth();
+    console.log('Auth Status',isAuth);
     if (!isAuth){this.router.navigate(['']); }
     return isAuth;
 }

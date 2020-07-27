@@ -24,7 +24,7 @@
   </form>
   <div  *ngIf="divView">
      <p>{{numberComplet}}/{{numberUncomplete}} items completed</p>
-     <div *ngFor="let todo of todoArray2">
+     <div *ngFor="let todo of todoArray">
 <mat-list *ngIf="!todo.completed">
   <mat-list-item>   
     <div fxLayout="row" fxFlexFill>
@@ -43,7 +43,7 @@
     </div>
           <div  *ngIf="divView && numberComplet">
                <div ><p>{{numberComplet}} Completed items</p>
-                 <div *ngFor="let todo of todoArray2" >
+                 <div *ngFor="let todo of todoArray" >
                    <mat-list  *ngIf="todo.completed" > 
                      <mat-list-item>
                        <div  fxLayout="row" fxFlexFill>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormControlName } from '@angular/forms';
-import { AuthService} from '../../services/auth.service';
+import { TodoService} from '../todo.service';
 import {Todos} from '../../modal/todo';
 @Component({
   selector: 'app-todo-list',
@@ -11,16 +11,15 @@ export class TodoListComponent implements OnInit {
   divView = false;
   editname = false;
   checked = true;
-  todoArray2: Todos[] = [];
+  todoArray: Todos[] = [];
   arr = [];
-   index2: number;
  numberComplet = 0;
    numberUncomplete: number;
   todoObj: any;
  todoname = 'Todo Name';
  todonameControl = new FormControl('');
     todo = new FormControl('');
-  constructor(private service: AuthService) { }
+  constructor(private service: TodoService) { }
 
   ngOnInit(): void {
   }
@@ -40,31 +39,30 @@ export class TodoListComponent implements OnInit {
             todo: value,
             completed: false
           };
-          this.service.todoadd(this.todoObj)
+          this.service.todoAdd(this.todoObj)
           .subscribe(resData => {
             const todo: Todos = {id: resData.tododata.id, todo: resData.tododata.todo, completed: resData.tododata.completed};
-            this.todoArray2.push(todo);
-            this.numberUncomplete = this.todoArray2.length;
+            this.todoArray.push(todo);
+            this.numberUncomplete = this.todoArray.length;
             this.viewtodo();
             this.todo.reset();
            });
          }
          }
       viewtodo(){
-        if (!this.todoArray2.length){
+        if (!this.todoArray.length){
           alert('No list to view');
         }else{this.divView = true; }
     }
     onCheckboxChange(e, value) {
-      this.index2 = this.todoArray2.indexOf(value);
       if (e.checked) {
        const status = true;
-       this.service.todoupdate(value, status)
+       this.service.todoUpdate(value, status)
        .subscribe((resData) => {
-        const leng = this.todoArray2.length;
-        this.todoArray2.splice(0, leng);
-        this.todoArray2 = resData.tododata;
-        this.arr = this.todoArray2.filter((data) => {
+        const leng = this.todoArray.length;
+        this.todoArray.splice(0, leng);
+        this.todoArray = resData.tododata;
+        this.arr = this.todoArray.filter((data) => {
           return data.completed === true;
             });
         this.numberComplet = this.arr.length;
@@ -72,12 +70,12 @@ export class TodoListComponent implements OnInit {
        });
       }else{
         const status = false;
-        this.service.todoupdate(value , status)
+        this.service.todoUpdate(value , status)
         .subscribe((resData) => {
-          const leng = this.todoArray2.length;
-          this.todoArray2.splice(0, leng);
-          this.todoArray2 = resData.tododata;
-          this.arr = this.todoArray2.filter((data) => {
+          const leng = this.todoArray.length;
+          this.todoArray.splice(0, leng);
+          this.todoArray = resData.tododata;
+          this.arr = this.todoArray.filter((data) => {
             return data.completed === true;
               });
           this.numberComplet = this.arr.length;
@@ -86,13 +84,13 @@ export class TodoListComponent implements OnInit {
       }
       }
       delete(id){
-        this.service.tododelete(id)
+        this.service.todoDelete(id)
         .subscribe(resData => {
-          const leng = this.todoArray2.length;
-          this.todoArray2.splice(0, leng);
-          this.todoArray2 = resData.tododata;
-          this.numberUncomplete = this.todoArray2.length;
-          console.log(this.todoArray2);
+          const leng = this.todoArray.length;
+          this.todoArray.splice(0, leng);
+          this.todoArray = resData.tododata;
+          this.numberUncomplete = this.todoArray.length;
+          console.log(this.todoArray);
          });
         }
 }

@@ -1,6 +1,6 @@
 const express = require('express');
 const userroute = express.Router();
-userroute.post('/login',(req,res) => {
+userroute.post('',(req,res) => {
     if(req.body.username ==='admin' && req.body.password ==='admin'){
         return res.json({message: 'Login Successfull'});
     }

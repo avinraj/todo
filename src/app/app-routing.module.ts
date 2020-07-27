@@ -6,7 +6,7 @@ import {AuthGuard} from './services/authGuard';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: '', loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule), canActivate: [AuthGuard]},
+  {path: '', loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule)},
   {path: '', loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule)},
   {path: '', loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule)},
   { path: '',
