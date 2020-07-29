@@ -4,8 +4,8 @@ import {Router} from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService { 
-isAuthenticated = false; 
+export class AuthService {
+isAuthenticated = false;
 constructor(private http: HttpClient, public router: Router) { }
   userLogin(uname: string , psswd: string){
     if (uname && psswd){

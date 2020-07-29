@@ -13,8 +13,8 @@ export class TodoService {
   }
   todoUpdate(value, Status){
     const id = value.id;
-   const updationObj = {id: value.id, todo: value.todo, completed: value.completed, status: Status};
-   return this.http.put<{tododata}>('/todolist/' +id, updationObj);
+    const updationObj = {id: value.id, todo: value.todo, completed: value.completed, status: Status};
+    return this.http.put<{tododata}>('/todolist/' + id, updationObj);
   }
   todoDelete(id){
    return this.http.delete<{tododata}>('/todolist/' + id);

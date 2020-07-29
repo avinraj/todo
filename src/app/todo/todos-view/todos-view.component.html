@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <mat-grid-list cols="4" rowHeight="2:2">
+        <mat-grid-tile><mat-card class="mat">
+            <img mat-card-image src="../../../assets/image_indicator.png" style="height: 150px" alt="">
+            <h3 style="font-style: normal;font-weight: bold;">Todo 1</h3>
+             <p>item 1,item 2..etc</p>
+        </mat-card></mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card class="mat">
+                <img mat-card-image src="../../../assets/image_indicator.png" style="height: 150px" alt="">
+                <h3 style="font-style: normal;font-weight: bold;">Todo 2</h3>
+                 <p>item 1,item 2..etc</p>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card class="mat">
+                <img mat-card-image src="../../../assets/image_indicator.png" style="height: 150px" alt="">
+                <h3 style="font-style: normal;font-weight: bold;">Todo 3</h3>
+                 <p>item 1,item 2..etc</p>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card class="mat">
+                <img mat-card-image src="../../../assets/image_indicator.png" style="height: 150px" alt="">
+                <h3 style="font-style: normal;font-weight: bold;">Todo 4</h3>
+                 <p>item 1,item 2..etc</p>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card class="mat">
+                <img mat-card-image src="../../../assets/image_indicator.png" style="height: 150px" alt="">
+                <h3 style="font-style: normal;font-weight: bold;">Todo 5</h3>
+                 <p>item 1,item 2..etc</p>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card class="mat">
+                <img mat-card-image src="../../../assets/image_indicator.png" style="height: 150px" alt="">
+                <h3 style="font-style: normal;font-weight: bold;">Todo 6</h3>
+                 <p>item 1,item 2..etc</p>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card class="mat">
+                <img mat-card-image src="../../../assets/image_indicator.png" style="height: 150px" alt="">
+                <h3 style="font-style: normal;font-weight: bold;">Todo 7</h3>
+                 <p>item 1,item 2..etc</p>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button mat-button (click)="newTodo()"><label for="">Add Todo</label><mat-icon aria-hidden="false" >add</mat-icon></button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div *ngIf="divView" class="todoadd">
+          <mat-card>
+              <h1>Create a New Todo</h1>
+              <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Add todo name">
+                </mat-form-field>
+                <div class="img">
+                    <button type="button"  mat-button>Select Image</button>
+                    <input type="file" #filePicker >
+                   </div>
+                   <div >
+            <img  alt="">
+                   </div>
+              </form>   
+          </mat-card>
+      </div>
+</div>
+

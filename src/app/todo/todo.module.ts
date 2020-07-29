@@ -11,11 +11,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {NavbarModule} from '../navbar/navbar.module';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { TodoProfileComponent } from './todo-profile/todo-profile.component';
 import { TodoAboutComponent } from './todo-about/todo-about.component';
 import {TodoRoutingModule} from './todo-routing.module';
+import { TodosViewComponent } from './todos-view/todos-view.component';
 @NgModule({
-  declarations: [TodoListComponent, TodoProfileComponent, TodoAboutComponent],
+  declarations: [TodoListComponent, TodoProfileComponent, TodoAboutComponent, TodosViewComponent],
   imports: [
     CommonModule,
     TodoRoutingModule,
@@ -29,7 +31,8 @@ import {TodoRoutingModule} from './todo-routing.module';
     MatCheckboxModule,
     MatCardModule,
     MatIconModule,
-    NavbarModule
+    NavbarModule,
+    MatGridListModule
   ],
   exports: [TodoListComponent]
 })
