@@ -16,8 +16,9 @@ import { TodoProfileComponent } from './todo-profile/todo-profile.component';
 import { TodoAboutComponent } from './todo-about/todo-about.component';
 import {TodoRoutingModule} from './todo-routing.module';
 import { TodosViewComponent } from './todos-view/todos-view.component';
+import { TodosCreateComponent } from './todos-create/todos-create.component';
 @NgModule({
-  declarations: [TodoListComponent, TodoProfileComponent, TodoAboutComponent, TodosViewComponent],
+  declarations: [TodoListComponent, TodoProfileComponent, TodoAboutComponent, TodosViewComponent, TodosCreateComponent],
   imports: [
     CommonModule,
     TodoRoutingModule,

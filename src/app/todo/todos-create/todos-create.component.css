@@ -1,0 +1,19 @@
+.container{
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 10%;
+}
+.img button{
+    margin-left: 25%;
+}
+input[type="file"]{
+    visibility: hidden;
+}
+.imgPreview{
+    height: 150px;
+    margin: 10px;
+    margin-right: 100px;
+}
+.imgPreview img{
+    height: 100%;
+}

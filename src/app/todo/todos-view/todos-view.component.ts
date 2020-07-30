@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {TodoService} from '../todo.service';
 @Component({
   selector: 'app-todos-view',
   templateUrl: './todos-view.component.html',
@@ -7,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosViewComponent implements OnInit {
 divView = false;
-  constructor() { }
+todosArray = [];
+  constructor(private service: TodoService) { }
 
   ngOnInit(): void {
+this.service.getTodos()
+.subscribe(resData => {
+  this.todosArray = resData.datas;
+});
   }
-  newTodo(){
-    console.log('Button clicked');
-    this.divView = true;
+  getClickedTodo(todos){
+    this.service.clickedTodo(todos);
   }
-
 }

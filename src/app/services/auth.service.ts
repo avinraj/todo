@@ -15,7 +15,7 @@ constructor(private http: HttpClient, public router: Router) { }
     if (resData){
       this.isAuthenticated = true;
       console.log(this.isAuthenticated);
-      this.router.navigate(['/todolist']);
+      this.router.navigate(['/todosView']);
     }
     else {
       this.isAuthenticated = false;

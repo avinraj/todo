@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Add new Todo</h1>
+    <mat-card>
+        <form action="" [formGroup]='form' (ngSubmit)='onSubmit()'>
+            <mat-form-field>
+                <input type="text" matInput placeholder="Enter todo title here" formControlName= 'title'>
+            </mat-form-field>
+            <div class="img">
+                    <button mat-button (click)="filePicker.click()">Select image</button>
+                    <input type="file" #filePicker (change)="OnImgPicked($event)">
+               </div>
+            <div class="imgPreview" *ngIf="imagePreview !=='' && imagePreview && form.get('image').valid">
+            <img [src]="imagePreview" alt="">
+            </div>
+            <button mat-button color="primary" type="reset" >Clear</button>
+            <button mat-button color="primary" type="submit" >Submit</button>
+            
+         </form>
+    </mat-card>
+</div>

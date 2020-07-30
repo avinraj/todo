@@ -12,16 +12,19 @@ export class TodoListComponent implements OnInit {
   editname = false;
   checked = true;
   todoArray: Todos[] = [];
+  todoDataObj: any;
   arr = [];
  numberComplet = 0;
    numberUncomplete: number;
   todoObj: any;
- todoname = 'Todo Name';
+ todoname ;
  todonameControl = new FormControl('');
     todo = new FormControl('');
   constructor(private service: TodoService) { }
 
   ngOnInit(): void {
+    this.todoDataObj = this.service.selectedTodo();
+    this.todoname = this.todoDataObj.todotitle;
   }
   addname(){
     this.editname = true;
@@ -35,17 +38,18 @@ export class TodoListComponent implements OnInit {
           return;
         }else{
           this.todoObj = {
-            id: '',
+            todosid: this.todoDataObj._id,
             todo: value,
             completed: false
           };
           this.service.todoAdd(this.todoObj)
           .subscribe(resData => {
-            const todo: Todos = {id: resData.tododata.id, todo: resData.tododata.todo, completed: resData.tododata.completed};
-            this.todoArray.push(todo);
-            this.numberUncomplete = this.todoArray.length;
-            this.viewtodo();
-            this.todo.reset();
+            console.log(resData);
+            // const todo: Todos = {id: resData.tododata.id, todo: resData.tododata.todo, completed: resData.tododata.completed};
+            // this.todoArray.push(todo);
+            // this.numberUncomplete = this.todoArray.length;
+            // this.viewtodo();
+            // this.todo.reset();
            });
          }
          }

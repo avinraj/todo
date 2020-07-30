@@ -1,16 +1,13 @@
 .container{
-    margin-left: 200px;
-    margin-top: 50px;
+    text-align: center;
+    position: relative;
+    margin-left: 20%;
 }
 .mat{
     text-align: center;
-    background-color: lavender;
-}
-.todoadd{
-    text-align: center;
     background-color: whitesmoke;
 }
-input[type="file"]{
-    visibility: hidden;
+mat-card{
+   margin: 5px;
 }
 

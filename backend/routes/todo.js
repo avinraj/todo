@@ -5,7 +5,7 @@ const todoArray =[];
 let collection;
 todoroute.post('',(req,res) => {
     const newtodoObj = {
-        todo: req.body.todo,
+        todo: req.body.todo, 
         completed: req.body.completed
     }
 collection.insertOne({todo:newtodoObj.todo,completed:newtodoObj.completed})
