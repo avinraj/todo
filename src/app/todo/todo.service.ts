@@ -13,12 +13,14 @@ clickedTodoArr = [];
     return this.http.post<{tododata}>('/todos/todoitem', body);
   }
   todoUpdate(value, Status){
-    const id = value.id;
-    const updationObj = {id: value.id, todo: value.todo, completed: value.completed, status: Status};
-    return this.http.put<{tododata}>('/todolist/' + id, updationObj);
+    const id = value.todosid;
+    const updationObj = {todoid : value.id, status : Status};
+    return this.http.put<{tododata}>('/todos/todoitem/' + id, updationObj);
   }
-  todoDelete(id){
-   return this.http.delete<{tododata}>('/todolist/' + id);
+  todoDelete(data){
+   const id = data.todosid;
+   const body = {id : data.id};
+   return this.http.put<{tododata}>('/todos/todoitemdelete/' + id, body);
   }
   todosAdd(file: File, name: string){
 const formdata = new FormData();
@@ -39,5 +41,9 @@ this.router.navigate(['todolist']);
   }
   selectedTodo(){
     return this.clickedTodoArr;
+  }
+  todoNameAdd(data){
+ const body = {id: data.id, todosname: data.todosname};
+ return this.http.post<{todosname}>('/todos/todosname', body);
   }
 }

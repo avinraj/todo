@@ -32,7 +32,7 @@
         <mat-checkbox class="example-margin" color="primary"  (change)="onCheckboxChange($event, todo)">{{todo.todo}}</mat-checkbox>
       </div>
       <div fxFlex  fxLayoutAlign="end center">
-        <button (click)="delete(todo.id)" mat-button >
+        <button (click)="delete(todo.todoid)" mat-button >
           <mat-icon aria-hidden="false" >delete</mat-icon>
         </button>
       </div>

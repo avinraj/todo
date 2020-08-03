@@ -25,13 +25,25 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     this.todoDataObj = this.service.selectedTodo();
     this.todoname = this.todoDataObj.todotitle;
+    this.todoArray = this.todoDataObj.todoitem;
+    console.log(this.todoArray);
+    this.arr = this.todoArray.filter((data) => {
+      return data.completed === true;
+        });
+    this.numberComplet = this.arr.length;
+    this.numberUncomplete = this.todoArray.length;
+    this.viewtodo();
   }
   addname(){
     this.editname = true;
   }
   addtodoname(name){
-    this.todoname = name;
-    this.editname = false;
+    const tododata = {id: this.todoDataObj._id, todosname: name};
+    this.service.todoNameAdd(tododata)
+    .subscribe(resData => {
+      this.todoname = resData.todosname;
+      this.editname = false;
+    });
      }
       addtodo(value){
         if (!value) {
@@ -44,12 +56,12 @@ export class TodoListComponent implements OnInit {
           };
           this.service.todoAdd(this.todoObj)
           .subscribe(resData => {
-            console.log(resData);
-            // const todo: Todos = {id: resData.tododata.id, todo: resData.tododata.todo, completed: resData.tododata.completed};
-            // this.todoArray.push(todo);
-            // this.numberUncomplete = this.todoArray.length;
-            // this.viewtodo();
-            // this.todo.reset();
+            const tododata = {todoid: resData.tododata.id, todo: resData.tododata.todo, completed: resData.tododata.completed};
+            this.todoArray.push(tododata);
+            console.log(this.todoArray);
+            this.divView = true;
+            this.numberUncomplete = this.todoArray.length;
+            this.todo.reset();
            });
          }
          }
@@ -59,9 +71,11 @@ export class TodoListComponent implements OnInit {
         }else{this.divView = true; }
     }
     onCheckboxChange(e, value) {
+      const tododata = {todosid: this.todoDataObj._id , id: value.todoid};
+      console.log(value);
       if (e.checked) {
        const status = true;
-       this.service.todoUpdate(value, status)
+       this.service.todoUpdate(tododata, status)
        .subscribe((resData) => {
         const leng = this.todoArray.length;
         this.todoArray.splice(0, leng);
@@ -74,7 +88,8 @@ export class TodoListComponent implements OnInit {
        });
       }else{
         const status = false;
-        this.service.todoUpdate(value , status)
+        console.log('todo data', tododata);
+        this.service.todoUpdate(tododata , status)
         .subscribe((resData) => {
           const leng = this.todoArray.length;
           this.todoArray.splice(0, leng);
@@ -87,8 +102,9 @@ export class TodoListComponent implements OnInit {
         });
       }
       }
-      delete(id){
-        this.service.todoDelete(id)
+      delete(todoid){
+        const tododata = {todosid: this.todoDataObj._id , id: todoid };
+        this.service.todoDelete(tododata)
         .subscribe(resData => {
           const leng = this.todoArray.length;
           this.todoArray.splice(0, leng);

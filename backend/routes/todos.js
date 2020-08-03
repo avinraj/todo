@@ -2,6 +2,7 @@ const express = require('express');
 const todosroute =express.Router();
 const ObjectId = require('mongodb').ObjectID;
 let collection;
+let todoArray =[];
 const multer=require('multer');
 const fs= require('fs')
 const MIME_TYPE_MAP={
@@ -60,9 +61,64 @@ todosroute.post('',multer({storage:storage}).single("image"),(req,res) => {
     }
     collection.updateOne({_id: ObjectId(req.body.id)},{$push:{todoitem:{todoid:newtodoObj.id,todo:newtodoObj.todo,completed:newtodoObj.completed}}})
     .then(result =>{
-        return res.json({message:'Data addded'});
+        if(result.modifiedCount){
+               return res.json({tododata: newtodoObj});
+        }
+        else{
+            return res.status(500).json({error:{message: 'Server error'}});
+        }
     })
     .catch(err =>{
+        return res.status(500).json({error:{message: 'Server error'}});
+    })
+ })
+ todosroute.put('/todoitem/:id',(req,res) => {
+     console.log(req.params.id)
+     console.log(req.body);
+     if(req.body){
+         collection.updateOne({_id: ObjectId(req.params.id),"todoitem.todoid" : ObjectId(req.body.todoid)},{$set:{"todoitem.$.completed":req.body.status}})
+         .then(result => {
+             if(result.modifiedCount){
+                collection.find({_id: ObjectId(req.params.id)}).toArray()
+                .then(result2 =>{
+               todoArray = result2[0].todoitem;
+            console.log(todoArray);  
+            return res.json({tododata:todoArray}); 
+            })
+                }else{return res.status(500).json({error:{message: 'Server error'}});}
+         })
+         .catch(err =>{
+            return res.status(500).json({error:{message: 'Server error'}});
+        })
+     }
+ })
+ todosroute.put('/todoitemdelete/:id',(req,res) =>{
+     console.log(req.params.id)
+     console.log(req.body)
+     collection.updateOne({_id: ObjectId(req.params.id)},{$pull:{todoitem:{todoid: ObjectId(req.body.id)}}},{multi:true})
+     .then(result =>{
+         if(result.modifiedCount){
+            collection.find({_id: ObjectId(req.params.id)}).toArray()
+            .then(result2 =>{
+                todoArray = result2[0].todoitem;
+                console.log(todoArray);  
+                return res.json({tododata:todoArray});  
+            })
+         }else{ return res.status(500).json({error:{message: 'Server error'}});}
+     })
+     .catch(err =>{
+        return res.status(500).json({error:{message: 'Server error'}});
+    })
+ })
+ todosroute.post('/todosname',(req,res) =>{
+     console.log(req.body);
+     collection.updateOne({_id: ObjectId(req.body.id)},{$set:{todotitle: req.body.todosname}})
+     .then(result =>{
+      if(result.modifiedCount){
+       return res.json({todosname: req.body.todosname});
+      }else{ return res.status(500).json({error:{message: 'Server error'}});}
+     })
+     .catch(err =>{
         return res.status(500).json({error:{message: 'Server error'}});
     })
  })

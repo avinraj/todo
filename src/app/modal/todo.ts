@@ -1,5 +1,5 @@
 export class Todos{
-    id: string;
+    todoid: string;
     todo: string;
     completed: boolean;
 }
