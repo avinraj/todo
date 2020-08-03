@@ -72,10 +72,11 @@ export class TodoListComponent implements OnInit {
     }
     onCheckboxChange(e, value) {
       const tododata = {todosid: this.todoDataObj._id , id: value.todoid};
+      let status: boolean;
       console.log(value);
-      if (e.checked) {
-       const status = true;
-       this.service.todoUpdate(tododata, status)
+      if (e.checked) { status = true; }
+       else{  status = false; }
+      this.service.todoUpdate(tododata, status)
        .subscribe((resData) => {
         const leng = this.todoArray.length;
         this.todoArray.splice(0, leng);
@@ -86,21 +87,6 @@ export class TodoListComponent implements OnInit {
         this.numberComplet = this.arr.length;
         this.viewtodo();
        });
-      }else{
-        const status = false;
-        console.log('todo data', tododata);
-        this.service.todoUpdate(tododata , status)
-        .subscribe((resData) => {
-          const leng = this.todoArray.length;
-          this.todoArray.splice(0, leng);
-          this.todoArray = resData.tododata;
-          this.arr = this.todoArray.filter((data) => {
-            return data.completed === true;
-              });
-          this.numberComplet = this.arr.length;
-          this.viewtodo();
-        });
-      }
       }
       delete(todoid){
         const tododata = {todosid: this.todoDataObj._id , id: todoid };

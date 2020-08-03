@@ -10,4 +10,7 @@
 mat-card{
    margin: 5px;
 }
+img{
+    max-height: 150px;
+}
 
